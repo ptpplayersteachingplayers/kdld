@@ -1,0 +1,401 @@
+/**
+ * PTP Training Pro - Admin Styles
+ */
+
+/* Admin Dashboard */
+.ptp-admin-wrap {
+    max-width: 1200px;
+    margin: 20px 20px 20px 0;
+}
+
+.ptp-admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.ptp-admin-header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Stats Cards */
+.ptp-admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.ptp-admin-stat {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.ptp-admin-stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0E0F11;
+    line-height: 1;
+}
+
+.ptp-admin-stat-label {
+    color: #666;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+/* Tables */
+.ptp-admin-table {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+.ptp-admin-table th {
+    background: #f9f9f9;
+    text-align: left;
+    padding: 12px 16px;
+    font-weight: 600;
+    border-bottom: 1px solid #ddd;
+}
+
+.ptp-admin-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.ptp-admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+.ptp-admin-table tr:hover {
+    background: #f9f9f9;
+}
+
+/* Status Badges */
+.ptp-status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.ptp-status-pending {
+    background: #FEF3C7;
+    color: #92400E;
+}
+
+.ptp-status-approved {
+    background: #D1FAE5;
+    color: #065F46;
+}
+
+.ptp-status-rejected {
+    background: #FEE2E2;
+    color: #991B1B;
+}
+
+.ptp-status-active {
+    background: #D1FAE5;
+    color: #065F46;
+}
+
+.ptp-status-completed {
+    background: #DBEAFE;
+    color: #1E40AF;
+}
+
+.ptp-status-paid {
+    background: #D1FAE5;
+    color: #065F46;
+}
+
+/* Action Buttons */
+.ptp-admin-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.ptp-admin-btn {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+}
+
+.ptp-admin-btn-primary {
+    background: #FCB900;
+    color: #0E0F11;
+}
+
+.ptp-admin-btn-primary:hover {
+    background: #E5A800;
+}
+
+.ptp-admin-btn-secondary {
+    background: #f1f1f1;
+    color: #333;
+}
+
+.ptp-admin-btn-secondary:hover {
+    background: #e1e1e1;
+}
+
+.ptp-admin-btn-danger {
+    background: #FEE2E2;
+    color: #991B1B;
+}
+
+.ptp-admin-btn-danger:hover {
+    background: #FECACA;
+}
+
+/* Settings Tabs */
+.ptp-settings-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 24px;
+}
+
+.ptp-settings-tab {
+    padding: 12px 20px;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+}
+
+.ptp-settings-tab:hover {
+    color: #333;
+}
+
+.ptp-settings-tab.active {
+    color: #0E0F11;
+    border-bottom-color: #FCB900;
+}
+
+/* Settings Form */
+.ptp-settings-section {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.ptp-settings-section h2 {
+    margin: 0 0 16px 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.ptp-form-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 16px;
+    align-items: start;
+    margin-bottom: 16px;
+}
+
+.ptp-form-row label {
+    font-weight: 500;
+    padding-top: 8px;
+}
+
+.ptp-form-row input[type="text"],
+.ptp-form-row input[type="number"],
+.ptp-form-row input[type="password"],
+.ptp-form-row select,
+.ptp-form-row textarea {
+    width: 100%;
+    max-width: 400px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.ptp-form-row input:focus,
+.ptp-form-row select:focus,
+.ptp-form-row textarea:focus {
+    outline: none;
+    border-color: #FCB900;
+    box-shadow: 0 0 0 3px rgba(252, 185, 0, 0.1);
+}
+
+.ptp-form-help {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+}
+
+/* Trainer Cards in Admin */
+.ptp-admin-trainer-card {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.ptp-admin-trainer-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.ptp-admin-trainer-info h3 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+}
+
+.ptp-admin-trainer-meta {
+    font-size: 13px;
+    color: #666;
+}
+
+/* Application Detail */
+.ptp-application-detail {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.ptp-application-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #eee;
+}
+
+.ptp-application-field {
+    margin-bottom: 16px;
+}
+
+.ptp-application-field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #666;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.ptp-application-field-value {
+    font-size: 15px;
+}
+
+/* Video Preview */
+.ptp-video-preview {
+    max-width: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.ptp-video-preview iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: none;
+}
+
+/* Notices */
+.ptp-admin-notice {
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.ptp-admin-notice-success {
+    background: #D1FAE5;
+    color: #065F46;
+    border: 1px solid #A7F3D0;
+}
+
+.ptp-admin-notice-error {
+    background: #FEE2E2;
+    color: #991B1B;
+    border: 1px solid #FECACA;
+}
+
+.ptp-admin-notice-warning {
+    background: #FEF3C7;
+    color: #92400E;
+    border: 1px solid #FDE68A;
+}
+
+/* Empty States */
+.ptp-empty-state {
+    text-align: center;
+    padding: 48px;
+    color: #666;
+}
+
+.ptp-empty-state-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.3;
+}
+
+/* Loading */
+.ptp-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+}
+
+.ptp-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid #eee;
+    border-top-color: #FCB900;
+    border-radius: 50%;
+    animation: ptp-spin 0.8s linear infinite;
+}
+
+@keyframes ptp-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 782px) {
+    .ptp-form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .ptp-admin-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .ptp-admin-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
