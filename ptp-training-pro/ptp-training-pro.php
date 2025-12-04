@@ -3,7 +3,7 @@
  * Plugin Name: PTP Training Pro
  * Plugin URI: https://ptpsummercamps.com
  * Description: Professional private training marketplace with map-based discovery, trainer videos, lesson packs, Google Calendar sync, and mobile-first UX.
- * Version: 3.2.0
+ * Version: 3.2.1
  * Author: PTP Soccer Camps
  * Text Domain: ptp-training-pro
  * Requires at least: 6.0
@@ -13,7 +13,7 @@
 
 if (!defined('ABSPATH')) exit;
 
-define('PTP_TRAINING_VERSION', '3.2.0');
+define('PTP_TRAINING_VERSION', '3.2.1');
 define('PTP_TRAINING_PATH', plugin_dir_path(__FILE__));
 define('PTP_TRAINING_URL', plugin_dir_url(__FILE__));
 define('PTP_TRAINING_BASENAME', plugin_basename(__FILE__));

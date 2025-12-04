@@ -342,7 +342,7 @@ class PTP_Database {
             'lng' => null,
             'radius' => 50,
             'sort' => 'rating',
-            'limit' => 24,
+            'limit' => 30,
             'offset' => 0
         );
         $args = wp_parse_args($args, $defaults);
@@ -395,14 +395,18 @@ class PTP_Database {
     
     public static function count_trainers($args = array()) {
         global $wpdb;
-        
+
         $defaults = array(
             'status' => 'approved',
             'state' => '',
-            'specialty' => ''
+            'specialty' => '',
+            'min_rating' => 0,
+            'lat' => null,
+            'lng' => null,
+            'radius' => 50
         );
         $args = wp_parse_args($args, $defaults);
-        
+
         $where = array("status = %s");
         $params = array($args['status']);
         
@@ -415,10 +419,31 @@ class PTP_Database {
             $where[] = "specialties LIKE %s";
             $params[] = '%' . $args['specialty'] . '%';
         }
-        
+
+        if ($args['min_rating'] > 0) {
+            $where[] = "avg_rating >= %f";
+            $params[] = $args['min_rating'];
+        }
+
         $where_clause = implode(' AND ', $where);
-        
-        return $wpdb->get_var($wpdb->prepare(
+
+        if ($args['lat'] && $args['lng']) {
+            $sql = "SELECT COUNT(*) FROM (
+                SELECT 1,
+                    (3959 * acos(cos(radians(%f)) * cos(radians(primary_location_lat)) * cos(radians(primary_location_lng) - radians(%f)) +
+                    sin(radians(%f)) * sin(radians(primary_location_lat)))) AS distance
+                FROM {$wpdb->prefix}ptp_trainers
+                WHERE $where_clause
+                HAVING distance <= %d
+            ) as distances";
+
+            array_unshift($params, $args['lat'], $args['lng'], $args['lat']);
+            $params[] = intval($args['radius']);
+
+            return (int)$wpdb->get_var($wpdb->prepare($sql, $params));
+        }
+
+        return (int)$wpdb->get_var($wpdb->prepare(
             "SELECT COUNT(*) FROM {$wpdb->prefix}ptp_trainers WHERE $where_clause",
             $params
         ));
