@@ -116,8 +116,23 @@
     line-height: 1.5;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
-    background: var(--ptp-white);
+    background: var(--ptp-gray-50);
     min-height: 100vh;
+}
+
+/* Unified page shell to mirror TeachMe.to spacing */
+.ptp-page-shell,
+.ptp-shell-wide {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 24px;
+}
+
+@media (min-width: 1024px) {
+    .ptp-page-shell,
+    .ptp-shell-wide {
+        padding: 32px 40px;
+    }
 }
 
 /* ============================================
@@ -447,7 +462,7 @@ a:hover {
    MARKETPLACE PAGE - TeachMe.to Style
    ============================================ */
 .ptp-marketplace {
-    background: var(--ptp-white);
+    background: linear-gradient(180deg, var(--ptp-gray-50) 0%, var(--ptp-gray-100) 100%);
 }
 
 /* Marketplace Header */
@@ -551,13 +566,20 @@ a:hover {
 /* Main Content Area */
 .ptp-mp-main {
     display: flex;
+    gap: 24px;
     min-height: calc(100vh - 130px);
+    width: min(1280px, 100%);
+    margin: 0 auto;
+    padding: 24px;
 }
 
 /* Coaches List */
 .ptp-mp-coaches {
     flex: 1;
     padding: 24px;
+    background: var(--ptp-white);
+    border-radius: var(--ptp-radius-lg);
+    box-shadow: var(--ptp-shadow-card);
     overflow-y: auto;
 }
 
@@ -800,6 +822,9 @@ a:hover {
     top: 130px;
     height: calc(100vh - 130px);
     display: none;
+    background: var(--ptp-white);
+    border-radius: var(--ptp-radius-lg);
+    box-shadow: var(--ptp-shadow-card);
 }
 
 @media (min-width: 1024px) {
