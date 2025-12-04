@@ -197,7 +197,7 @@ class PTP_REST_API {
             'lng' => $request->get_param('lng'),
             'radius' => $request->get_param('radius') ?: 50,
             'sort' => $request->get_param('sort') ?: 'rating',
-            'limit' => min($request->get_param('limit') ?: 24, 100),
+            'limit' => min($request->get_param('limit') ?: 30, 100),
             'offset' => $request->get_param('offset') ?: 0
         );
         
@@ -376,7 +376,12 @@ class PTP_REST_API {
     // Applications
     public function submit_application($request) {
         global $wpdb;
-        
+
+        $nonce = $request->get_header('X-WP-Nonce');
+        if (!$nonce || !wp_verify_nonce($nonce, 'wp_rest')) {
+            return new WP_Error('invalid_nonce', 'Security check failed', array('status' => 401));
+        }
+
         $data = array(
             'email' => sanitize_email($request->get_param('email')),
             'first_name' => sanitize_text_field($request->get_param('first_name')),
@@ -395,10 +400,26 @@ class PTP_REST_API {
             'why_join' => sanitize_textarea_field($request->get_param('why_join')),
             'availability_notes' => sanitize_textarea_field($request->get_param('availability'))
         );
-        
+
         // Validation
-        if (empty($data['email']) || empty($data['first_name']) || empty($data['last_name'])) {
-            return new WP_Error('missing_fields', 'Required fields are missing', array('status' => 400));
+        $required_fields = array(
+            'email',
+            'first_name',
+            'last_name',
+            'phone',
+            'location_city',
+            'location_state',
+            'location_zip',
+            'playing_background',
+            'experience_summary',
+            'intro_video_url',
+            'availability_notes'
+        );
+
+        foreach ($required_fields as $field) {
+            if (empty($data[$field])) {
+                return new WP_Error('missing_fields', 'Required fields are missing', array('status' => 400));
+            }
         }
         
         // Check for existing application
